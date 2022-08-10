@@ -1,10 +1,8 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import PokemonDetail from './components/PokemonDetail/PokemonDetail';
 
-function Home() {
+function PokemonDetail({pokemon}) {
   const [pokemons, setPokemons] = useState();
-
   useEffect(() => {
     fetch('https://pokeapi.co/api/v2/pokemon/name')
       .then(res => res.json)
@@ -12,17 +10,14 @@ function Home() {
         setPokemons(response.pokemons);
       });
   }, []);
-  const renderItem = ({item}) => {
-    <PokemonDetail pokemon={item} />;
-  };
 
   return (
     <View>
-      <Text>Home</Text>
-      <FlatList renderItem={renderItem} data={pokemons} />
+      <Text>PokemonDetail</Text>
+      <Text>{pokemons.name}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({});
-export default Home;
+export default PokemonDetail;

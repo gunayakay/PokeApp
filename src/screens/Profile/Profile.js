@@ -1,10 +1,10 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-export default function PokemonDetail() {
+export default function Profile() {
   return (
     <View>
-      <Text>PokemonDetail</Text>
+      <Text>Profile</Text>
     </View>
   );
 }
