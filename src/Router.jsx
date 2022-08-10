@@ -1,13 +1,13 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Login from './screens/Login/Login';
-import Home from './screens/Home/Home';
-import Profile from './screens/Profile/Profile';
-import Register from './screens/Register/Register';
-import Settings from './screens/Settings/Settings';
-import Watchlist from './screens/Watchlist/Watchlist';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Login from "./screens/Login/Login";
+import Home from "./screens/Home/Home";
+import Profile from "./screens/Profile/Profile";
+import Register from "./screens/Register/Register";
+import Settings from "./screens/Settings/Settings";
+import Watchlist from "./screens/Watchlist/Watchlist";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
