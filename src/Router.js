@@ -13,13 +13,15 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const NestedTab = () => {
-  <NavigationContainer>
-    <Tab.Navigator>
-      <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="Watchlist" component={Watchlist} />
-      <Tab.Screen name="Settings" component={Settings} />
-    </Tab.Navigator>
-  </NavigationContainer>;
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Watchlist" component={Watchlist} />
+        <Tab.Screen name="Settings" component={Settings} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
 };
 
 const Router = () => {
