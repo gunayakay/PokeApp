@@ -1,5 +1,4 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Login from "./screens/Login/Login";
@@ -14,25 +13,22 @@ const Tab = createBottomTabNavigator();
 
 const NestedTab = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Profile" component={Profile} />
-        <Tab.Screen name="Watchlist" component={Watchlist} />
-        <Tab.Screen name="Settings" component={Settings} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Watchlist" component={Watchlist} />
+      <Tab.Screen name="Settings" component={Settings} />
+    </Tab.Navigator>
   );
 };
 
 const Router = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={false}>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Register" component={Register} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator screenOptions={false}>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Main" component={NestedTab} />
+      <Stack.Screen name="Register" component={Register} />
+    </Stack.Navigator>
   );
 };
 

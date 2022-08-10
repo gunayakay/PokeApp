@@ -8,7 +8,7 @@ export default function Login({ navigation }) {
       <CustomButton
         text={"Giriş yap"}
         onPress={() => {
-          navigation.navigate("Home");
+          navigation.navigate("Main", { screen: "Home" });
         }}
       />
       <Text>Login</Text>

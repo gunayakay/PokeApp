@@ -1,24 +1,24 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import PokemonDetail from './components/PokemonDetail/PokemonDetail';
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import PokemonDetail from "./components/PokemonDetail/PokemonDetail";
 
 function Home() {
-  const [pokemons, setPokemons] = useState();
-
-  useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon/name')
-      .then(res => res.json)
-      .then(response => {
-        setPokemons(response.pokemons);
-      });
-  }, []);
-  const renderItem = ({item}) => {
-    <PokemonDetail pokemon={item} />;
+  const response = useQuery(["getPokemos"], async () => {
+    fetch("https://pokeapi.co/api/v2/pokemon")
+      .then((res) => res.json())
+      .then((data) => {
+        return data;
+      })
+      .catch((err) => console.log(err));
+  });
+  const renderItem = ({ item }) => {
+    return <PokemonDetail pokemon={item} />;
   };
 
   return (
     <View>
-      <Text>Home</Text>
+      <Text></Text>
       <FlatList renderItem={renderItem} data={pokemons} />
     </View>
   );
