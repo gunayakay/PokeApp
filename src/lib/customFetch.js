@@ -1,6 +1,8 @@
-async function customFetch(url, params) {
-  return fetch(url).then((res) => res.json());
+async function customFetch(url, params = null) {
+  return fetch(url, params).then((res) => res.json());
 }
 
-//Araştırma konusu: burada kullanılan yapı facade pattern olarak geçer. Gang of Four isimli yazılımcıların
-// yazdığı Design Patterns adlı kitaptan esinlenilmiştir.
+export default customFetch;
+
+// Araştırma konusu: burada kullanılan yapı facade pattern olarak geçer. Gang of Four isimli
+// yazılımcıların yazdığı Design Patterns adlı kitaptan esinlenilmiştir.
