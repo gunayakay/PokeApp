@@ -6,7 +6,7 @@ import Home from "./screens/Home/Home";
 import Profile from "./screens/Profile/Profile";
 import Register from "./screens/Register/Register";
 import Settings from "./screens/Settings/Settings";
-import Watchlist from "./screens/Watchlist/Watchlist";
+import Watchlist from "./screens/Settings/Watchlist/Watchlist";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

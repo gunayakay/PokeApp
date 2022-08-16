@@ -14,7 +14,6 @@ function Home() {
 
   return (
     <View>
-      <Text>1</Text>
       <FlatList renderItem={renderItem} data={data.results} numColumns={2} />
     </View>
   );
