@@ -1,16 +1,15 @@
 import { FlatList, Text, View } from "react-native";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import PokemonDetail from "../PokemonDetail/PokemonDetail";
+import Pokebox from "./components/Pokebox";
 import getPokemons from "../../services/getPokemons";
 
-function Home() {
+function Pokedex() {
   const { data, isLoading, isError } = useQuery(["getPokemos"], getPokemons);
-
   if (isLoading) return <Text>Loading</Text>; // useState
   if (isError) return <Text>Error</Text>; // useMemo
 
-  const renderItem = ({ item }) => <PokemonDetail pokemon={item} />;
+  const renderItem = ({ item }) => <Pokebox pokemon={item} />;
 
   return (
     <View>
@@ -20,4 +19,4 @@ function Home() {
 }
 
 // const styles = StyleSheet.create({});
-export default Home;
+export default Pokedex;

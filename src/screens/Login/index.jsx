@@ -1,4 +1,5 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+/* eslint-disable react/prop-types */
+import { Text, TouchableOpacity } from "react-native";
 import React from "react";
 import {
   Button,
@@ -10,6 +11,7 @@ import {
   Center,
   Heading,
 } from "native-base";
+
 function Login({ navigation }) {
   return (
     <Center w="100%">
@@ -90,7 +92,7 @@ function Login({ navigation }) {
                 }}
                 href="#"
               >
-                Sign UP
+                {" Sign UP"}
               </Text>
             </TouchableOpacity>
           </HStack>
@@ -101,4 +103,3 @@ function Login({ navigation }) {
 }
 
 export default Login;
-const styles = StyleSheet.create({});

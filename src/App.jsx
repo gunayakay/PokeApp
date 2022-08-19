@@ -10,12 +10,17 @@ function App() {
   return (
     <NavigationContainer>
       <QueryClientProvider client={queryClient}>
-        <NativeBaseProvider>
+        <NativeBaseProvider config={config}>
           <Router />
         </NativeBaseProvider>
       </QueryClientProvider>
     </NavigationContainer>
   );
 }
+const config = {
+  dependencies: {
+    "linear-gradient": require("react-native-linear-gradient").default,
+  },
+};
 
 export default App;

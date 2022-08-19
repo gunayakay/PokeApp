@@ -1,4 +1,4 @@
-import { Alert, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import {
   Button,
@@ -10,10 +10,6 @@ import {
   Heading,
 } from "native-base";
 function Register({ navigation }) {
-  // const navigateButton = (navigation) => {
-  //   Alert.alert("Kaydınız Oluşturuldu");
-  // };
-
   return (
     <Center w="100%">
       <Box safeArea p="2" w="90%" maxW="290" py="8">
@@ -51,13 +47,7 @@ function Register({ navigation }) {
             <FormControl.Label>Confirm Password</FormControl.Label>
             <Input type="password" />
           </FormControl>
-          <Button
-            mt="2"
-            colorScheme="indigo"
-            onPress={() => {
-              navigation.navigate("Login");
-            }}
-          >
+          <Button mt="2" colorScheme="indigo">
             Sign up
           </Button>
         </VStack>

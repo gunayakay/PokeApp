@@ -1,17 +1,22 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Login from "./screens/Login/Login";
-import Home from "./screens/Home/Home";
-import Profile from "./screens/Profile/Profile";
-import Register from "./screens/Register/Register";
-import Settings from "./screens/Settings/Settings";
-import Watchlist from "./screens/Settings/Watchlist/Watchlist";
+import Login from "./screens/Login";
+import Home from "./screens/Home";
+import Profile from "./screens/Profile";
+import Register from "./screens/Register";
+import Settings from "./screens/Settings";
+import Pokedex from "./screens/Pokedex";
+import Watchlist from "./screens/Watchlist";
+import PokemonDetail from "./screens/PokemonDetail";
+import Abilities from "./screens/Abilities";
+import Moves from "./screens/Moves";
+import Locations from "./screens/Locations";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const NestedTab = () => {
+function NestedTab() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Home} />
@@ -20,16 +25,21 @@ const NestedTab = () => {
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
-};
+}
 
-const Router = () => {
+function Router() {
   return (
-    <Stack.Navigator screenOptions={false}>
+    <Stack.Navigator>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Main" component={NestedTab} />
       <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Pokedex" component={Pokedex} />
+      <Stack.Screen name="PokemonDetail" component={PokemonDetail} />
+      <Stack.Screen name="Moves" component={Moves} />
+      <Stack.Screen name="Abilities" component={Abilities} />
+      <Stack.Screen name="Locations" component={Locations} />
     </Stack.Navigator>
   );
-};
+}
 
 export default Router;
