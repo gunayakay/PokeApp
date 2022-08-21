@@ -7,9 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import CBox from "./components/cBox";
 import SearchBar from "../../components/SearchBar";
 import generateRandomPokemon from "../../utils/generateRandomPokemon";
-
 import getPokemonDetail from "../../services/getPokemonDetail";
-import RandomPokemon from "../../components/randomPokemon";
+import RandomPokemon from "../../components/RandomPokemon";
 
 function Home({ navigation }) {
   const { data, isLoading, isError } = useQuery(["todayPokemon"], async () => {
@@ -21,6 +20,7 @@ function Home({ navigation }) {
 
   if (isLoading) return <Text>Loading</Text>;
   if (isError) return <Text>Error</Text>;
+  console.log(data);
   return (
     <Box flex="1">
       <SearchBar placeholder="Search Pokemon, Move, Ability etc." />
@@ -60,7 +60,10 @@ function Home({ navigation }) {
         <Box alignItems="center" justifyContent="center">
           <Text fontSize="28">What Today's Pokemon</Text>
         </Box>
-        <RandomPokemon />
+        <RandomPokemon
+          name={data.results.name}
+          image={data.sprites.other["official-artwork"].front_default}
+        />
       </VStack>
     </Box>
   );

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { VStack, Icon, Input, Box, Divider, Heading } from "native-base";
-import { Ionicons } from "react-native-vector-icons";
+import { VStack, Input, Box, Divider, Heading } from "native-base";
 
 function SearchBar({ placeholder }) {
   return (
@@ -26,14 +25,6 @@ function SearchBar({ placeholder }) {
           py="1"
           px="2"
           borderWidth="0"
-          inputLeftElement={
-            <Icon
-              ml="2"
-              size="4"
-              color="gray.400"
-              as={<Ionicons name="ios-search" />}
-            />
-          }
         />
       </VStack>
     </VStack>

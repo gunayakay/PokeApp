@@ -1,16 +1,23 @@
 import React from "react";
-import { Box, Image } from "native-base";
+import { Box, Image, Text } from "native-base";
 
-function RandomPokemon({}) {
+function RandomPokemon({ image, name }) {
   return (
-    <Box justifyContent="center" alignItems="center">
+    <Box
+      backgroundColor="black"
+      justifyContent="space-between"
+      alignItems="center"
+    >
+      <Text>{name}</Text>
       <Image
         source={{
-          uri: data.sprites.other["official-artwork"].front_default,
+          uri: image,
         }}
         alt="image"
-        height="100"
-        width="100"
+        height="200"
+        width="200"
+        color="white"
+        opacity={1}
       />
     </Box>
   );
