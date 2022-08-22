@@ -8,7 +8,7 @@ function CBox({ onPress, title, color, style }) {
         style={style}
         paddingY={3}
         padding={6}
-        margin={3}
+        marginBottom={3}
         justifyContent="center"
         alignItems="center"
         bg={{

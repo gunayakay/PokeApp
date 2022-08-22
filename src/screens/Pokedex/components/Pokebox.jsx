@@ -19,6 +19,7 @@ import { useNavigation } from "@react-navigation/native";
 import getPokemonDetail from "@/services/getPokemonDetail";
 import capitalizeFirstLetter from "../../../utils/capitalizeFirstLetter";
 import backgroundColor from "../../../static/bg";
+import Loading from "../../../components/loading";
 
 function Pokebox({ pokemon }) {
   const navigation = useNavigation();
@@ -30,7 +31,7 @@ function Pokebox({ pokemon }) {
     }
   );
 
-  if (isLoading) return <Text>Loading</Text>;
+  if (isLoading) return <Loading />;
   if (isError) return <Text>Error</Text>;
   // en tepedeki box gereksizmiş
 

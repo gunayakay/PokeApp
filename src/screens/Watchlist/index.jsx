@@ -1,11 +1,14 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { Box, Link } from "native-base";
 
 export default function WatchList() {
   return (
-    <View>
-      <Text>WatchList</Text>
-    </View>
+    <Box>
+      <Link href="https://anizm.net/pokemon-1-sezon-1-bolum">
+        Tap to go to link
+      </Link>
+    </Box>
   );
 }
 

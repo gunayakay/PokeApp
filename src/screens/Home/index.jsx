@@ -9,20 +9,31 @@ import SearchBar from "../../components/SearchBar";
 import generateRandomPokemon from "../../utils/generateRandomPokemon";
 import getPokemonDetail from "../../services/getPokemonDetail";
 import RandomPokemon from "../../components/RandomPokemon";
+import Loading from "../../components/loading";
 
 function Home({ navigation }) {
-  const { data, isLoading, isError } = useQuery(["todayPokemon"], async () => {
-    const response = await getPokemonDetail(
-      `https://pokeapi.co/api/v2/pokemon/${generateRandomPokemon(1, 1156)}`
-    );
-    return response;
-  });
+  const randomId = generateRandomPokemon(1, 1156);
+  const { data, isLoading, isError } = useQuery(
+    ["todayPokemon"],
+    async () => {
+      const response = await getPokemonDetail(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      return response;
+    },
+    {
+      refetchOnMount: false,
+      refetchOnWindowFocus: false, // ekrana geri döndüğünde tekrardan fetch işlemini çalştrma
+      staleTime: 1000 * 60 * 60 * 24,
+      cacheTime: 1000 * 60 * 60 * 24, // cacheTime ' n staleTime'dan büyük olmaması önerilir çünkü baat veriyi cachede tutmak saçma
+    }
+  );
 
-  if (isLoading) return <Text>Loading</Text>;
+  if (isLoading) return <Loading />;
   if (isError) return <Text>Error</Text>;
-  console.log(data);
+
   return (
-    <Box flex="1">
+    <Box flex="1" paddingX="5" bgColor="white">
       <SearchBar placeholder="Search Pokemon, Move, Ability etc." />
       <VStack>
         <HStack space={3} justifyContent="center">
@@ -61,7 +72,8 @@ function Home({ navigation }) {
           <Text fontSize="28">What Today's Pokemon</Text>
         </Box>
         <RandomPokemon
-          name={data.results.name}
+          id={randomId}
+          // name={data.results.name}
           image={data.sprites.other["official-artwork"].front_default}
         />
       </VStack>
