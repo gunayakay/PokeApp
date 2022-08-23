@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import Pokebox from "./components/Pokebox";
 import getPokemons from "../../services/getPokemons";
 import Loading from "../../components/loading";
-import LoadingSkeleton from "../../components/LoadingSkeleton";
 
 function Pokedex() {
   const { data, isLoading, isError } = useQuery(["getPokemos"], getPokemons);

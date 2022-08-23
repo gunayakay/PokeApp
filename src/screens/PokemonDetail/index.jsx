@@ -1,9 +1,20 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
 import React from "react";
-import { useColorModeValue, Center, Box } from "native-base";
+import {
+  useColorModeValue,
+  Heading,
+  Center,
+  Box,
+  Text,
+  Image,
+} from "native-base";
 import { TabView, SceneMap } from "react-native-tab-view";
-import { Dimensions, StatusBar, Animated, Pressable } from "react-native";
+import { Dimensions, Animated, Pressable } from "react-native";
+import usePokemon from "../../hooks/usePokemon";
+import Loading from "../../components/loading";
+import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
+import backgroundColor from "../../static/bg";
 
 const FirstRoute = () => (
   <Center flex={1} my="4">
@@ -39,31 +50,66 @@ const renderScene = SceneMap({
   fourth: FourthRoute,
 });
 
-function Pokedex() {
+function PokemonDetail({ route }) {
+  const { url } = route.params;
+  const { data, isLoading, isError } = usePokemon(url);
+  console.log(data);
+  if (isLoading) return <Loading />;
+  if (isError) return <Text>Error</Text>;
+  const primaryPokemonType = data.types[0].type.name;
+
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {
       key: "first",
-      title: "Tab 1",
+      title: "About",
     },
     {
       key: "second",
-      title: "Tab 2",
+      title: "Base Stats",
     },
     {
       key: "third",
-      title: "Tab 3",
+      title: "Evoluion",
     },
     {
       key: "fourth",
-      title: "Tab 4",
+      title: "Moves",
     },
   ]);
 
   const renderTabBar = (props) => {
     const inputRange = props.navigationState.routes.map((x, i) => i);
+
     return (
-      <Box flexDirection="row">
+      <Box
+        flexDirection="row"
+        position="relative"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Box
+          justifyContent="center"
+          alignItems="center"
+          height="150"
+          width="150"
+          position="absolute"
+          bottom="12"
+          data
+        >
+          <Heading size="md" color="white" textAlign="center">
+            {capitalizeFirstLetter(data.name)}
+          </Heading>
+          <Image
+            source={{
+              uri: data.sprites.other["official-artwork"].front_default,
+            }}
+            alt="image"
+            width="full"
+            height="full"
+          />
+        </Box>
+
         {props.navigationState.routes.map((route, i) => {
           const opacity = props.position.interpolate({
             inputRange,
@@ -110,20 +156,34 @@ function Pokedex() {
   };
 
   return (
-    <TabView
-      navigationState={{
-        index,
-        routes,
-      }}
-      renderScene={renderScene}
-      renderTabBar={renderTabBar}
-      onIndexChange={setIndex}
-      initialLayout={initialLayout}
-      style={{
-        marginTop: StatusBar.currentHeight,
-      }}
-    />
+    <Box
+      flex={1}
+      justifyContent="flex-end"
+      alignItems="flex-end"
+      backgroundColor={backgroundColor[primaryPokemonType]}
+    >
+      <Box height="3/4" width="full">
+        <TabView
+          navigationState={{
+            index,
+            routes,
+          }}
+          renderScene={renderScene}
+          renderTabBar={renderTabBar}
+          onIndexChange={setIndex}
+          initialLayout={initialLayout}
+          style={{
+            paddingTop: 25,
+            width: "100%",
+            backgroundColor: "white",
+            overflow: "visible",
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+          }}
+        />
+      </Box>
+    </Box>
   );
 }
 
-export default Pokedex;
+export default PokemonDetail;

@@ -40,7 +40,9 @@ function Pokebox({ pokemon }) {
     <Pressable
       flex={1}
       onPress={() => {
-        navigation.navigate("PokemonDetail");
+        navigation.navigate("PokemonDetail", {
+          url: pokemon.url,
+        });
       }}
     >
       <Box margin={2} alignItems="center" flex="1">
