@@ -1,37 +1,61 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { Box, ScrollView } from "native-base";
 import React from "react";
-import { Box, Link, Pressable } from "native-base";
+import ImageBackground from "../../components/Imagebackground";
 
-export default function WatchList() {
+function WatchList() {
   return (
-    
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <Box margin={5}>
+        <ImageBackground
+          href="https://anizm.net/pokemon-izle"
+          imageURL={require("../../static/4.jpg")}
+          heading=" Pokémon: Indigo League "
+          subText="82 Episodes"
+        />
+        <ImageBackground
+          href="https://anizm.net/pokemon-izle"
+          imageURL={require("../../static/5.jpg")}
+          heading=" Adventures in the Orange Islands"
+          subText="36 Episodes"
+        />
+        <ImageBackground
+          href="https://anizm.net/pokemon-izle"
+          imageURL={require("../../static/3.jpg")}
+          heading=" The Johto Journeys"
+          subText="41 Episodes"
+        />
+        <ImageBackground
+          href="https://anizm.net/pokemon-izle"
+          imageURL={require("../../static/1.jpg")}
+          heading=" Johto League Champions"
+          subText="52 Episodes"
+        />
+        <ImageBackground
+          href="https://anizm.net/pokemon-izle"
+          imageURL={require("../../static/2.jpg")}
+          heading=" Master Quest"
+          subText="65 Episodes"
+        />
+        <ImageBackground
+          href="https://anizm.net/pokemon-izle"
+          imageURL={require("../../static/6.jpg")}
+          heading=" Advanced"
+          subText="40 Episodes"
+        />
+        <ImageBackground
+          href="https://anizm.net/pokemon-izle"
+          imageURL={require("../../static/7.jpg")}
+          heading=" Advanced Challenge"
+          subText="52 Episodes"
+        />
+        <ImageBackground
+          href="https://anizm.net/pokemon-izle"
+          imageURL={require("../../static/8.jpg")}
+          heading=" Advanced Battle"
+          subText="54 Episodes "
+        />
+      </Box>
+    </ScrollView>
   );
 }
-
-
-{/* <Box>
-        <Link href="https://anizm.net/pokemon-1-sezon-1-bolum">
-          Pokémon: Indigo League 82
-        </Link>
-      </Box>
-      <Box>
-        <Link href="">Adventures in the Orange Islands 36</Link>
-      </Box>
-      <Box>
-        <Link href="">The Johto Journeys 41</Link>
-      </Box>
-      <Box>
-        <Link href="">Johto League Champions 52</Link>
-      </Box>
-      <Box>
-        <Link href="">Master Quest 65</Link>
-      </Box>
-      <Box>
-        <Link href="">Advanced 40</Link>
-      </Box>
-      <Box>
-        <Link href="">Advanced Challenge 54</Link>
-      </Box>
-      <Box>
-        <Link href="">Advanced battle</Link>
-      </Box> */}
+export default WatchList;

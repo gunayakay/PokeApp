@@ -20,9 +20,9 @@ import {
 function Login({ navigation }) {
   return (
     <Box flex={1} alignItems="center" justifyContent="center">
-      <Box safeArea p="2" py="8" w="90%" maxW="290" flex={1}>
+      <Box safeArea p="2" my="8" w="90%" maxW="290" flex={1}>
         <Image
-          width="400"
+          width="full"
           height="150"
           marginBottom={7}
           resizeMode="contain"

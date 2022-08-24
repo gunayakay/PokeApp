@@ -6,12 +6,52 @@ import PropTypes from "prop-types";
 function ImageBackground({ href, imageURL, subText, heading }) {
   const FactoryImageBackground = Factory(Background);
   return (
-    <Link href={href}>
-      <Box>
-        <FactoryImageBackground source={imageURL}>
-          <Box>
-            <Text>{heading}</Text>
-            <Text>{subText}</Text>
+    <Link href={href} marginBottom="7">
+      <Box w="100%" height="200">
+        <FactoryImageBackground
+          source={imageURL}
+          w="100%"
+          h="100%"
+          borderRadius="xl"
+          overflow="hidden"
+        >
+          <Box
+            flex={1}
+            backgroundColor="black"
+            w="100%"
+            h="100%"
+            position="absolute"
+            top={0}
+            left={0}
+            zIndex={100}
+            borderRadius="xl"
+            opacity={0.4}
+          />
+          <Box
+            flex={1}
+            position="relative"
+            justifyContent="flex-end"
+            alignItems="center"
+            paddingBottom="5"
+          >
+            <Text
+              fontSize="22"
+              textAlign="center"
+              color="white"
+              zIndex={100}
+              position="relative"
+            >
+              {heading}
+            </Text>
+            <Text
+              fontSize="18"
+              textAlign="center"
+              color="white"
+              zIndex={100}
+              position="relative"
+            >
+              {subText}
+            </Text>
           </Box>
         </FactoryImageBackground>
       </Box>
