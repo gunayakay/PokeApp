@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable global-require */
@@ -7,13 +8,14 @@ import CBox from "./components/cBox";
 import SearchBar from "../../components/SearchBar";
 import RandomPokemon from "../../components/RandomPokemon";
 import Loading from "../../components/loading";
-import usegetPokemon from "../../hooks/usegetPokemon";
 import generateRandomPokemon from "../../utils/generateRandomPokemon";
+import usePokemon from "../../hooks/usePokemon";
 
-function Home({ route }) {
+function Home() {
   const randomId = generateRandomPokemon(1, 1156);
-  const { url } = route.params;
-  const { data, isLoading, isError } = usegetPokemon(url);
+  const { data, isLoading, isError } = usePokemon(
+    `https://pokeapi.co/api/v2/pokemon/${randomId}`
+  );
 
   if (isLoading) return <Loading />;
   if (isError) return <Text>Error</Text>;

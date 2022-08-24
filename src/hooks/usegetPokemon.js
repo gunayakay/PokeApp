@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import getPokemonDetail from "../services/getPokemonDetail";
-import generateRandomPokemon from "../utils/generateRandomPokemon";
 
-function usegetPokemon(url) {
-  const randomId = generateRandomPokemon(1, 1156);
+function usegetPokemon(url, randomId) {
   return (
     useQuery(["todayPokemon"], url),
     async () => {

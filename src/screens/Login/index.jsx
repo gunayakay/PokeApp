@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
 import { Text, TouchableOpacity } from "react-native";
@@ -13,12 +14,20 @@ import {
   Heading,
   Link,
   Pressable,
+  Image,
 } from "native-base";
 
 function Login({ navigation }) {
   return (
-    <Center w="100%">
-      <Box safeArea p="2" py="8" w="90%" maxW="290">
+    <Box flex={1} alignItems="center" justifyContent="center">
+      <Box safeArea p="2" py="8" w="90%" maxW="290" flex={1}>
+        <Image
+          width="400"
+          height="150"
+          marginBottom={7}
+          resizeMode="contain"
+          source={require("../../static/logo2.png")}
+        />
         <Heading
           size="lg"
           fontWeight="600"
@@ -29,6 +38,7 @@ function Login({ navigation }) {
         >
           Welcome to PokeAPP
         </Heading>
+
         <Heading
           mt="1"
           _dark={{
@@ -104,7 +114,7 @@ function Login({ navigation }) {
           </HStack>
         </VStack>
       </Box>
-    </Center>
+    </Box>
   );
 }
 
