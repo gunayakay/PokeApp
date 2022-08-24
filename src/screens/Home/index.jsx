@@ -3,31 +3,17 @@
 /* eslint-disable global-require */
 import React from "react";
 import { Box, HStack, Text, VStack } from "native-base";
-import { useQuery } from "@tanstack/react-query";
 import CBox from "./components/cBox";
 import SearchBar from "../../components/SearchBar";
-import generateRandomPokemon from "../../utils/generateRandomPokemon";
-import getPokemonDetail from "../../services/getPokemonDetail";
 import RandomPokemon from "../../components/RandomPokemon";
 import Loading from "../../components/loading";
+import usegetPokemon from "../../hooks/usegetPokemon";
+import generateRandomPokemon from "../../utils/generateRandomPokemon";
 
-function Home({ navigation }) {
+function Home({ navigation, route }) {
   const randomId = generateRandomPokemon(1, 1156);
-  const { data, isLoading, isError } = useQuery(
-    ["todayPokemon"],
-    async () => {
-      const response = await getPokemonDetail(
-        `https://pokeapi.co/api/v2/pokemon/${randomId}`
-      );
-      return response;
-    },
-    {
-      refetchOnMount: false,
-      refetchOnWindowFocus: false, // ekrana geri döndüğünde tekrardan fetch işlemini çalştrma
-      staleTime: 1000 * 60 * 60 * 24,
-      cacheTime: 1000 * 60 * 60 * 24, // cacheTime ' n staleTime'dan büyük olmaması önerilir çünkü baat veriyi cachede tutmak saçma
-    }
-  );
+  const { url } = route.params;
+  const { data, isLoading, isError } = usegetPokemon(url);
 
   if (isLoading) return <Loading />;
   if (isError) return <Text>Error</Text>;
