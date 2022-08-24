@@ -1,12 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React from "react";
+import { Box } from "native-base";
+import DarkMode from "../../components/DarkMode";
 
-export default function Settings() {
+function Settings() {
   return (
-    <View>
-      <Text>Settings</Text>
-    </View>
+    <Box flex={1}>
+      <DarkMode />
+    </Box>
   );
 }
 
-const styles = StyleSheet.create({});
+export default Settings;
