@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
 import { Text, TouchableOpacity } from "react-native";
 import React from "react";
@@ -10,6 +11,8 @@ import {
   Box,
   Center,
   Heading,
+  Link,
+  Pressable,
 } from "native-base";
 
 function Login({ navigation }) {
@@ -24,7 +27,7 @@ function Login({ navigation }) {
             color: "warmGray.50",
           }}
         >
-          Welcome to My PokeAPP
+          Welcome to PokeAPP
         </Heading>
         <Heading
           mt="1"
@@ -46,8 +49,11 @@ function Login({ navigation }) {
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
             <Input type="password" />
-            <TouchableOpacity>
-              <Text
+            <Pressable>
+              <Link
+                onPress={() => {
+                  navigation.navigate("ForgetPassword");
+                }}
                 _text={{
                   fontSize: "xs",
                   fontWeight: "500",
@@ -56,9 +62,9 @@ function Login({ navigation }) {
                 alignSelf="flex-end"
                 mt="1"
               >
-                Forget the Password?
-              </Text>
-            </TouchableOpacity>
+                Forget Password?
+              </Link>
+            </Pressable>
           </FormControl>
           <Button
             mt="2"

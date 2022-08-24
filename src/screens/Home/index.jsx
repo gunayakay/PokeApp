@@ -10,7 +10,7 @@ import Loading from "../../components/loading";
 import usegetPokemon from "../../hooks/usegetPokemon";
 import generateRandomPokemon from "../../utils/generateRandomPokemon";
 
-function Home({ navigation, route }) {
+function Home({ route }) {
   const randomId = generateRandomPokemon(1, 1156);
   const { url } = route.params;
   const { data, isLoading, isError } = usegetPokemon(url);

@@ -12,6 +12,7 @@ import PokemonDetail from "./screens/PokemonDetail";
 import Abilities from "./screens/Abilities";
 import Moves from "./screens/Moves";
 import Locations from "./screens/Locations";
+import ForgetPassword from "./screens/ForgetPassword";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -38,6 +39,7 @@ function Router() {
       <Stack.Screen name="Moves" component={Moves} />
       <Stack.Screen name="Abilities" component={Abilities} />
       <Stack.Screen name="Locations" component={Locations} />
+      <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
     </Stack.Navigator>
   );
 }
