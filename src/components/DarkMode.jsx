@@ -2,7 +2,6 @@ import React from "react";
 import {
   useColorMode,
   Text,
-  Button,
   Center,
   Box,
   useColorModeValue,
@@ -21,7 +20,7 @@ function DarkMode() {
         w="100%"
       >
         <Text fontSize="lg" display="flex" mb={20}>
-          The active color mode is {""}
+          The active color mode is{" "}
           <Text bold fontSize="18px">
             {useColorModeValue("Light", "Dark")}
           </Text>

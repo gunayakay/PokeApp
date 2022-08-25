@@ -1,12 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+/* eslint-disable global-require */
+import React from "react";
+import Card from "../../components/Card";
 
-export default function Profile() {
-  return (
-    <View>
-      <Text>Profile</Text>
-    </View>
-  );
+function Profile() {
+  return <Card imageURL={require("../../static/3.jpg")} />;
 }
-
-const styles = StyleSheet.create({});
+export default Profile;

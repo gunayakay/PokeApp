@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
@@ -65,9 +66,6 @@ function Pokebox({ pokemon }) {
             shadow: 2,
             borderWidth: 0,
           }}
-          // _light={{
-          //   backgroundColor: "gray.50",
-          // }}
         >
           <Heading size="md" color="white">
             {capitalizeFirstLetter(pokemon.name)}
