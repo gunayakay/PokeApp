@@ -78,10 +78,10 @@ function Pokebox({ pokemon }) {
                   <Badge
                     color="white"
                     backgroundColor="white"
-                    opacity={50}
+                    opacity={70}
                     borderRadius="full"
                   >
-                    <Text color="white">{item.type.name}</Text>
+                    <Text color="black">{item.type.name}</Text>
                   </Badge>
                 ))}
               </VStack>

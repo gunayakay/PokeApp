@@ -1,29 +1,25 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import React from "react";
-import {
-  Box,
-  HStack,
-  AspectRatio,
-  Heading,
-  VStack,
-  Pressable,
-  Image,
-  Text,
-} from "native-base";
+import { Box, HStack, Heading, VStack, Image, Text, Badge } from "native-base";
 
-function Card({ text, imageURL }) {
+function Card({ type, about, title, imageURL }) {
   return (
-    <Pressable flex={1}>
-      <Box margin={2} alignItems="center" bg="red.400">
+    <Box
+      w="100%"
+      marginBottom={10}
+      h="250"
+      bg="yellow.300"
+      borderRadius="7"
+      padding="3"
+    >
+      <Box flex="2">
         <Box
-          bg
           paddingTop="4"
           paddingBottom="2"
           paddingX="2"
           width="100%"
           rounded="lg"
           overflow="hidden"
-          borderColor="coolGray.200"
-          borderWidth="1"
           _dark={{
             borderColor: "coolGray.600",
             backgroundColor: "gray.700",
@@ -34,22 +30,43 @@ function Card({ text, imageURL }) {
           }}
         >
           <Heading size="md" color="white">
-            <Text>{text}</Text>
+            <Text>{title}</Text>
           </Heading>
 
-          <Box>
+          <Box flexDirection="column">
             <HStack space={2}>
               <VStack>
-                <Text>{text}</Text>
+                <Badge
+                  maxW="50"
+                  color="white"
+                  backgroundColor="white"
+                  opacity={70}
+                  borderRadius="full"
+                >
+                  <Text color="black">{type}</Text>
+                </Badge>
+
+                <Text maxW="180" marginTop="3">
+                  {about}
+                </Text>
               </VStack>
-              <AspectRatio w="50%" ratio={1 / 1}>
-                <Image source={imageURL} w="100%" h="150" />
-              </AspectRatio>
             </HStack>
           </Box>
         </Box>
       </Box>
-    </Pressable>
+
+      <Box flex="1">
+        <Image
+          right="4"
+          bottom="-30"
+          source={require("../static/pikacu.png")}
+          w="100"
+          height="150"
+          position="absolute"
+          resizeMode="contain"
+        />
+      </Box>
+    </Box>
   );
 }
 export default Card;
