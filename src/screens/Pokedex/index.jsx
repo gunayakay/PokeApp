@@ -6,11 +6,11 @@ import getPokemons from "../../services/getPokemons";
 import Loading from "../../components/loading";
 
 function Pokedex() {
-  const { data, isLoading, isError } = useQuery(["getPokemos"], getPokemons);
+  const { data, isLoading, isError } = useQuery(["getPokemons"], getPokemons);
   if (isLoading) return <Loading />; // useState
   if (isError) return <Text>Error</Text>; // useMemo
 
-  const renderItem = ({ item }) => <Pokebox pokemon={item} />;
+  const renderItem = ({ item, idx }) => <Pokebox key={idx} pokemon={item} />;
 
   return (
     <View>

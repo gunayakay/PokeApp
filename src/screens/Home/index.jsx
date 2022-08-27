@@ -9,11 +9,11 @@ import SearchBar from "../../components/SearchBar";
 import RandomPokemon from "../../components/RandomPokemon";
 import Loading from "../../components/loading";
 import generateRandomPokemon from "../../utils/generateRandomPokemon";
-import usePokemon from "../../hooks/usePokemon";
+import useDailyPokemon from "../../hooks/useDailyPokemon";
 
-function Home() {
+function Home({ navigation }) {
   const randomId = generateRandomPokemon(1, 1156);
-  const { data, isLoading, isError } = usePokemon(
+  const { data, isLoading, isError } = useDailyPokemon(
     `https://pokeapi.co/api/v2/pokemon/${randomId}`
   );
 
@@ -61,7 +61,6 @@ function Home() {
         </Box>
         <RandomPokemon
           id={randomId}
-          // name={data.results.name}
           image={data.sprites.other["official-artwork"].front_default}
         />
       </VStack>

@@ -1,13 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import getPokemonDetail from "../services/getPokemonDetail";
 
-function usegetPokemon(url, randomId) {
-  return (
-    useQuery(["todayPokemon"], url),
+function useDailyPokemon(url) {
+  return useQuery(
+    ["todayPokemon", url],
     async () => {
-      const data = await getPokemonDetail(
-        `https://pokeapi.co/api/v2/pokemon/${randomId}`
-      );
+      const data = await getPokemonDetail(url);
       return data;
     },
     {
@@ -18,4 +16,4 @@ function usegetPokemon(url, randomId) {
     }
   );
 }
-export default usegetPokemon;
+export default useDailyPokemon;

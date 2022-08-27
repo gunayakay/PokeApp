@@ -16,7 +16,6 @@ function DarkMode() {
         p="4"
         flex="1"
         bg={useColorModeValue("warmGray.50", "coolGray.800")}
-        maxW="300"
         w="100%"
       >
         <Text fontSize="lg" display="flex" mb={20}>

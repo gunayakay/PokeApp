@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Box, Image, Pressable, Text } from "native-base";
 import { Animated } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-function RandomPokemon({ image, name, id }) {
+function RandomPokemon({ image, id }) {
   const navigation = useNavigation();
   const dissapear = useRef(new Animated.Value(0)).current;
   const dissapearIn = () => {
@@ -21,7 +21,10 @@ function RandomPokemon({ image, name, id }) {
   const [pressed, setPressed] = useState(false);
   function handlePressed() {
     if (!pressed) setPressed((prev) => !prev);
-    else navigation.navigate("PokemonDetail");
+    else
+      navigation.navigate("PokemonDetail", {
+        url: `https://pokeapi.co/api/v2/pokemon/${id}`,
+      });
   }
   return (
     <Box
@@ -43,6 +46,7 @@ function RandomPokemon({ image, name, id }) {
           <Image
             width="200"
             height="200"
+            alt="Pokeball"
             source={require("../static/pokeball.png")}
           />
         )}

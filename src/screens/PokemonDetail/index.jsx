@@ -51,10 +51,11 @@ const renderScene = SceneMap({
 });
 
 function PokemonDetail({ route }) {
-  const { url } = route.url;
+  const { url } = route.params;
   const { data, isLoading, isError } = usePokemon(url);
   if (isLoading) return <Loading />;
   if (isError) return <Text>Error</Text>;
+
   const primaryPokemonType = data.types[0].type.name;
 
   const [index, setIndex] = React.useState(0);
