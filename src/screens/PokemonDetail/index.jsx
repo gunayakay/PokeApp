@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
-import React from "react";
+import React, { useState } from "react";
 import {
   useColorModeValue,
   Heading,
@@ -8,55 +8,35 @@ import {
   Box,
   Text,
   Image,
+  Pressable,
 } from "native-base";
 import { TabView, SceneMap } from "react-native-tab-view";
-import { Dimensions, Animated, Pressable } from "react-native";
+import { Dimensions, Animated } from "react-native";
 import usePokemon from "../../hooks/usePokemon";
 import Loading from "../../components/loading";
 import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import backgroundColor from "../../static/bg";
-
-const FirstRoute = () => (
-  <Center flex={1} my="4">
-    This is Tab 1
-  </Center>
-);
-
-const SecondRoute = () => (
-  <Center flex={1} my="4">
-    This is Tab 2
-  </Center>
-);
-
-const ThirdRoute = () => (
-  <Center flex={1} my="4">
-    This is Tab 3
-  </Center>
-);
-
-const FourthRoute = () => (
-  <Center flex={1} my="4">
-    This is Tab 4{" "}
-  </Center>
-);
+import Moves from "./components/Moves";
+import Evoluion from "./components/Evolution";
+import BaseStats from "./components/BaseStats";
+import About from "./components/About";
 
 const initialLayout = {
   width: Dimensions.get("window").width,
 };
 const renderScene = SceneMap({
-  first: FirstRoute,
-  second: SecondRoute,
-  third: ThirdRoute,
-  fourth: FourthRoute,
+  first: About,
+  second: BaseStats,
+  third: Evoluion,
+  fourth: Moves,
 });
 
 function PokemonDetail({ route }) {
-  const { url } = route.params;
-  const { data, isLoading, isError } = usePokemon(url);
-  if (isLoading) return <Loading />;
-  if (isError) return <Text>Error</Text>;
-
-  const primaryPokemonType = data.types[0].type.name;
+  const [pressed, setPressed] = useState(false);
+  function handlePressed() {
+    console.log("pressed");
+    setPressed((prev) => !prev);
+  }
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -77,6 +57,12 @@ function PokemonDetail({ route }) {
       title: "Moves",
     },
   ]);
+  const { url } = route.params;
+  const { data, isLoading, isError } = usePokemon(url);
+  if (isLoading) return <Loading />;
+  if (isError) return <Text>Error</Text>;
+
+  const primaryPokemonType = data.types[0].type.name;
 
   const renderTabBar = (props) => {
     const inputRange = props.navigationState.routes.map((x, i) => i);
@@ -136,7 +122,6 @@ function PokemonDetail({ route }) {
             >
               <Pressable
                 onPress={() => {
-                  console.log(i);
                   setIndex(i);
                 }}
               >
@@ -162,6 +147,25 @@ function PokemonDetail({ route }) {
       alignItems="flex-end"
       backgroundColor={backgroundColor[primaryPokemonType]}
     >
+      <Pressable top="4" right="4" position="absolute" onPress={handlePressed}>
+        {pressed ? (
+          <Image
+            source={require("../../static/fullfav.png")}
+            resizeMode="contain"
+            w="35"
+            h="35"
+            alt="image"
+          />
+        ) : (
+          <Image
+            source={require("../../static/fav.png")}
+            resizeMode="contain"
+            w="35"
+            h="35"
+            alt="image"
+          />
+        )}
+      </Pressable>
       <Box height="3/4" width="full">
         <TabView
           navigationState={{

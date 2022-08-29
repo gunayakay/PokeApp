@@ -6,6 +6,14 @@ import Router from "./Router";
 
 const queryClient = new QueryClient();
 
+const config = {
+  dependencies: {
+    "linear-gradient": require("react-native-linear-gradient").default,
+  },
+  useSystemColorMode: false,
+  initialColorMode: "dark",
+};
+
 function App() {
   return (
     <NavigationContainer>
@@ -17,10 +25,5 @@ function App() {
     </NavigationContainer>
   );
 }
-const config = {
-  dependencies: {
-    "linear-gradient": require("react-native-linear-gradient").default,
-  },
-};
 
 export default App;

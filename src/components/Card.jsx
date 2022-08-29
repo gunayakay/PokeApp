@@ -64,6 +64,7 @@ function Card({ type, about, title, imageURL }) {
           height="150"
           position="absolute"
           resizeMode="contain"
+          alt="image"
         />
       </Box>
     </Box>

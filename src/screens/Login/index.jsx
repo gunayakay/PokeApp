@@ -26,6 +26,7 @@ function Login({ navigation }) {
           marginBottom={7}
           resizeMode="contain"
           source={require("../../static/logo2.png")}
+          alt="image"
         />
         <Heading
           size="lg"
