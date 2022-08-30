@@ -1,9 +1,10 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text } from "react-native";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Pokebox from "./components/Pokebox";
 import getPokemons from "../../services/getPokemons";
 import Loading from "../../components/loading";
+import { Box } from "native-base";
 
 function Pokedex() {
   const { data, isLoading, isError } = useQuery(["getPokemons"], getPokemons);
@@ -13,9 +14,17 @@ function Pokedex() {
   const renderItem = ({ item, idx }) => <Pokebox key={idx} pokemon={item} />;
 
   return (
-    <View>
+    <Box
+      paddingTop={2}
+      _dark={{
+        bg: "coolGray.800",
+      }}
+      _light={{
+        bg: "warmGray.50",
+      }}
+    >
       <FlatList renderItem={renderItem} data={data.results} numColumns={2} />
-    </View>
+    </Box>
   );
 }
 

@@ -17,12 +17,22 @@ function SearchBar({ placeholder }) {
       <VStack w="100%" space={5} alignSelf="center">
         <Heading fontSize="28">What Pokemon are you looking for?</Heading>
         <Input
+          _dark={{
+            borderColor: "white",
+            placeholderTextColor: "coolGray.300",
+            color: "white",
+          }}
+          _light={{
+            placeholderTextColor: "warmGray.500",
+            borderColor: "warmGray.500",
+            color: "black",
+          }}
           placeholder={placeholder}
           variant="rounded"
           width="100%"
-          borderRadius="10"
+          borderWidth={2}
           py="1"
-          px="2"
+          px="4"
         />
       </VStack>
     </VStack>

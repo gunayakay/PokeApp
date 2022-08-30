@@ -48,7 +48,6 @@ function Pokebox({ pokemon }) {
     >
       <Box margin={2} alignItems="center" flex="1">
         <Box
-          bg
           backgroundColor={backgroundColor[primaryPokemonType]}
           paddingTop="4"
           paddingBottom="2"
@@ -56,16 +55,6 @@ function Pokebox({ pokemon }) {
           width="100%"
           rounded="lg"
           overflow="hidden"
-          borderColor="coolGray.200"
-          borderWidth="1"
-          _dark={{
-            borderColor: "coolGray.600",
-            backgroundColor: "gray.700",
-          }}
-          _web={{
-            shadow: 2,
-            borderWidth: 0,
-          }}
         >
           <Heading size="md" color="white">
             {capitalizeFirstLetter(pokemon.name)}

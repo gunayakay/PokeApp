@@ -11,8 +11,17 @@ import {
 } from "native-base";
 function Register({ navigation }) {
   return (
-    <Center w="100%">
-      <Box safeArea p="2" w="90%" maxW="290" py="8">
+    <Center
+      flex="1"
+      w="100%"
+      _dark={{
+        bg: "coolGray.800",
+      }}
+      _light={{
+        bg: "warmGray.50",
+      }}
+    >
+      <Box safeArea w="90%" maxW="290" py="8">
         <Heading
           size="lg"
           color="coolGray.800"

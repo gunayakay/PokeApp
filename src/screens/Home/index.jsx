@@ -18,7 +18,16 @@ function Home({ navigation }) {
   );
 
   return (
-    <Box flex="1" paddingX="5" bgColor="white">
+    <Box
+      flex="1"
+      paddingX="5"
+      _dark={{
+        bg: "coolGray.800",
+      }}
+      _light={{
+        bg: "warmGray.50",
+      }}
+    >
       <SearchBar placeholder="Search Pokemon, Move, Ability etc." />
       <VStack>
         <HStack space={3} justifyContent="center">

@@ -5,10 +5,10 @@ import { Box, HStack, Heading, VStack, Image, Text, Badge } from "native-base";
 function Card({ type, about, title, imageURL }) {
   return (
     <Box
+      bg="yellow.300"
       w="100%"
       marginBottom={10}
       h="250"
-      bg="yellow.300"
       borderRadius="7"
       padding="3"
     >
@@ -20,14 +20,6 @@ function Card({ type, about, title, imageURL }) {
           width="100%"
           rounded="lg"
           overflow="hidden"
-          _dark={{
-            borderColor: "coolGray.600",
-            backgroundColor: "gray.700",
-          }}
-          _web={{
-            shadow: 2,
-            borderWidth: 0,
-          }}
         >
           <Heading size="md" color="white">
             <Text>{title}</Text>

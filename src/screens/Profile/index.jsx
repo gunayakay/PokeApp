@@ -6,7 +6,15 @@ import Card from "../../components/Card";
 function Profile() {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <Box margin={5}>
+      <Box
+        padding={5}
+        _dark={{
+          bg: "coolGray.800",
+        }}
+        _light={{
+          bg: "warmGray.50",
+        }}
+      >
         <Card
           imageURL={require("../../static/3.jpg")}
           title="Pokemon ismi"

@@ -5,7 +5,15 @@ import ImageBackground from "../../components/Imagebackground";
 function WatchList() {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <Box margin={5}>
+      <Box
+        padding={5}
+        _dark={{
+          bg: "coolGray.800",
+        }}
+        _light={{
+          bg: "warmGray.50",
+        }}
+      >
         <ImageBackground
           href="https://anizm.net/pokemon-izle"
           imageURL={require("../../static/4.jpg")}

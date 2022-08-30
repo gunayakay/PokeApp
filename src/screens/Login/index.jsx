@@ -1,13 +1,14 @@
 /* eslint-disable global-require */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
-import { Text, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import React from "react";
 import {
   Button,
   HStack,
   VStack,
   FormControl,
+  Text,
   Input,
   Box,
   Heading,
@@ -18,8 +19,19 @@ import {
 
 function Login({ navigation }) {
   return (
-    <Box flex={1} alignItems="center" justifyContent="center">
-      <Box safeArea p="2" my="8" w="90%" maxW="290" flex={1}>
+    <Box
+      flex={1}
+      alignItems="center"
+      justifyContent="center"
+      padding={5}
+      _dark={{
+        bg: "coolGray.800",
+      }}
+      _light={{
+        bg: "warmGray.50",
+      }}
+    >
+      <Box safeArea my="8" w="90%" maxW="290" flex={1}>
         <Image
           width="full"
           height="150"
@@ -88,9 +100,11 @@ function Login({ navigation }) {
           <HStack mt="6" justifyContent="center">
             <Text
               fontSize="sm"
-              color="coolGray.600"
               _dark={{
-                color: "warmGray.200",
+                color: "coolGray.300",
+              }}
+              _light={{
+                color: "coolGray.700",
               }}
             >
               I am a new user.
@@ -107,6 +121,12 @@ function Login({ navigation }) {
                   fontSize: "sm",
                 }}
                 href="#"
+                _dark={{
+                  color: "coolGray.300",
+                }}
+                _light={{
+                  color: "coolGray.700",
+                }}
               >
                 {" Sign UP"}
               </Text>

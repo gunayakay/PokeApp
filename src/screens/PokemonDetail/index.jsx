@@ -76,6 +76,14 @@ function PokemonDetail({ route }) {
         position="relative"
         justifyContent="center"
         alignItems="center"
+        paddingTop="25"
+        borderTopRadius="20"
+        _dark={{
+          bg: "coolGray.800",
+        }}
+        _light={{
+          bg: "warmGray.50",
+        }}
       >
         <Box
           justifyContent="center"
@@ -84,7 +92,6 @@ function PokemonDetail({ route }) {
           width="150"
           position="absolute"
           bottom="12"
-          data
         >
           <Heading size="md" color="white" textAlign="center">
             {capitalizeFirstLetter(data.name)}
@@ -170,7 +177,6 @@ function PokemonDetail({ route }) {
           onIndexChange={setIndex}
           initialLayout={initialLayout}
           style={{
-            paddingTop: 25,
             width: "100%",
             backgroundColor: "white",
             overflow: "visible",
