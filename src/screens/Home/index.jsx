@@ -11,14 +11,11 @@ import Loading from "../../components/loading";
 import generateRandomPokemon from "../../utils/generateRandomPokemon";
 import useDailyPokemon from "../../hooks/useDailyPokemon";
 
+const randomId = generateRandomPokemon(1, 1156);
 function Home({ navigation }) {
-  const randomId = generateRandomPokemon(1, 1156);
   const { data, isLoading, isError } = useDailyPokemon(
     `https://pokeapi.co/api/v2/pokemon/${randomId}`
   );
-
-  if (isLoading) return <Loading />;
-  if (isError) return <Text>Error</Text>;
 
   return (
     <Box flex="1" paddingX="5" bgColor="white">
@@ -59,10 +56,14 @@ function Home({ navigation }) {
         <Box alignItems="center" justifyContent="center">
           <Text fontSize="28">What Today's Pokemon</Text>
         </Box>
-        <RandomPokemon
-          id={randomId}
-          image={data.sprites.other["official-artwork"].front_default}
-        />
+        {isLoading && <Loading />}
+        {isError && <Text>Error</Text>}
+        {!isLoading && !isError && (
+          <RandomPokemon
+            id={randomId}
+            image={data.sprites.other["official-artwork"].front_default}
+          />
+        )}
       </VStack>
     </Box>
   );

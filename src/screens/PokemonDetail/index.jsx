@@ -1,14 +1,16 @@
+/* eslint-disable global-require */
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
 import React, { useState } from "react";
 import {
   useColorModeValue,
   Heading,
-  Center,
   Box,
   Text,
   Image,
   Pressable,
+  FavouriteIcon,
 } from "native-base";
 import { TabView, SceneMap } from "react-native-tab-view";
 import { Dimensions, Animated } from "react-native";
@@ -20,6 +22,7 @@ import Moves from "./components/Moves";
 import Evoluion from "./components/Evolution";
 import BaseStats from "./components/BaseStats";
 import About from "./components/About";
+import icons from "../../static/icons";
 
 const initialLayout = {
   width: Dimensions.get("window").width,
@@ -61,7 +64,7 @@ function PokemonDetail({ route }) {
   const { data, isLoading, isError } = usePokemon(url);
   if (isLoading) return <Loading />;
   if (isError) return <Text>Error</Text>;
-
+  console.log(data);
   const primaryPokemonType = data.types[0].type.name;
 
   const renderTabBar = (props) => {
@@ -147,24 +150,14 @@ function PokemonDetail({ route }) {
       alignItems="flex-end"
       backgroundColor={backgroundColor[primaryPokemonType]}
     >
-      <Pressable top="4" right="4" position="absolute" onPress={handlePressed}>
-        {pressed ? (
-          <Image
-            source={require("../../static/fullfav.png")}
-            resizeMode="contain"
-            w="35"
-            h="35"
-            alt="image"
-          />
-        ) : (
-          <Image
-            source={require("../../static/fav.png")}
-            resizeMode="contain"
-            w="35"
-            h="35"
-            alt="image"
-          />
-        )}
+      <Pressable
+        onPress={handlePressed}
+        backgroundColor="red"
+        top="4"
+        flex={1}
+        right="4"
+      >
+        {pressed ? icons.favouriteRed : icons.favouriteWhite}
       </Pressable>
       <Box height="3/4" width="full">
         <TabView

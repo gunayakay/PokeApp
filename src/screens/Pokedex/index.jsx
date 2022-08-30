@@ -19,5 +19,4 @@ function Pokedex() {
   );
 }
 
-// const styles = StyleSheet.create({});
 export default Pokedex;
