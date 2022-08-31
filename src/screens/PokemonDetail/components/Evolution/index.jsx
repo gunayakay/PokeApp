@@ -1,7 +1,18 @@
 import React from "react";
-import { Center } from "native-base";
+import { Center, Text, Progress, Box } from "native-base";
+import PropTypes from "prop-types";
+import useEvolution from "../../../../hooks/useEvolution";
+import extractPokemonId from "../../../../utils/extractPokemonId";
+import Loading from "../../../../components/loading";
 
-function Evolution() {
+function Evolution({ url }) {
+  const pokemonId = extractPokemonId(url);
+  const { data, isLoading, isError } = useEvolution(
+    `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`
+  );
+  if (isLoading) return <Loading />;
+  if (isError) return <Text>Error</Text>;
+
   return (
     <Center
       flex={1}
@@ -12,8 +23,14 @@ function Evolution() {
         bg: "warmGray.50",
       }}
     >
-      Evolution
+      <Box bg="red" flex={1}>
+        <Text>{data.evolution_chain}</Text>
+      </Box>
     </Center>
   );
 }
+
+Evolution.propTypes = {
+  url: PropTypes.string.isRequired,
+};
 export default Evolution;

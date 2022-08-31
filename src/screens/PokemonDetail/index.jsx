@@ -59,13 +59,13 @@ function PokemonDetail({ route: namedRoute }) {
   const renderScene = ({ route }) => {
     switch (route.key) {
       case "first":
-        return <About pokemonId={url} />;
+        return <About url={url} />;
       case "second":
-        return <BaseStats pokemonId={url} />;
+        return <BaseStats url={url} />;
       case "third":
-        return <Evoluion pokemonId={url} />;
+        return <Evoluion url={url} />;
       case "fourth":
-        return <Moves pokemonId={url} />;
+        return <Moves url={url} />;
       default:
         return 0;
     }

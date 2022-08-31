@@ -4,10 +4,6 @@ import { Text, Center, Box, Switch, useColorMode } from "native-base";
 function DarkMode() {
   const { colorMode, toggleColorMode } = useColorMode();
 
-  const handleClick = useCallback(() => {
-    toggleColorMode();
-  }, []);
-
   return (
     <Center flex={1} w="full">
       <Box
@@ -27,7 +23,7 @@ function DarkMode() {
             {colorMode}
           </Text>
         </Text>
-        <Switch onChange={handleClick} />
+        <Switch onChange={toggleColorMode} />
       </Box>
     </Center>
   );
