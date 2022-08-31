@@ -10,7 +10,6 @@ import {
   Text,
   Image,
   Pressable,
-  FavouriteIcon,
 } from "native-base";
 import { TabView, SceneMap } from "react-native-tab-view";
 import { Dimensions, Animated } from "react-native";
@@ -27,14 +26,8 @@ import icons from "../../static/icons";
 const initialLayout = {
   width: Dimensions.get("window").width,
 };
-const renderScene = SceneMap({
-  first: About,
-  second: BaseStats,
-  third: Evoluion,
-  fourth: Moves,
-});
 
-function PokemonDetail({ route }) {
+function PokemonDetail({ route: namedRoute }) {
   const [pressed, setPressed] = useState(false);
   function handlePressed() {
     console.log("pressed");
@@ -60,11 +53,27 @@ function PokemonDetail({ route }) {
       title: "Moves",
     },
   ]);
-  const { url } = route.params;
+  const { url } = namedRoute.params;
   const { data, isLoading, isError } = usePokemon(url);
+
+  const renderScene = ({ route }) => {
+    switch (route.key) {
+      case "first":
+        return <About pokemonId={url} />;
+      case "second":
+        return <BaseStats pokemonId={url} />;
+      case "third":
+        return <Evoluion pokemonId={url} />;
+      case "fourth":
+        return <Moves pokemonId={url} />;
+      default:
+        return 0;
+    }
+  };
+
   if (isLoading) return <Loading />;
   if (isError) return <Text>Error</Text>;
-  console.log(data);
+
   const primaryPokemonType = data.types[0].type.name;
 
   const renderTabBar = (props) => {
