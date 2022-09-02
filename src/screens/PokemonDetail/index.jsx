@@ -11,7 +11,7 @@ import {
   Image,
   Pressable,
 } from "native-base";
-import { TabView, SceneMap } from "react-native-tab-view";
+import { TabView } from "react-native-tab-view";
 import { Dimensions, Animated } from "react-native";
 import usePokemon from "../../hooks/usePokemon";
 import Loading from "../../components/loading";
@@ -28,6 +28,7 @@ const initialLayout = {
 };
 
 function PokemonDetail({ route: namedRoute }) {
+  const [favoritePokemon, setFavoritePokemon] = useState(false);
   const [pressed, setPressed] = useState(false);
   function handlePressed() {
     console.log("pressed");
@@ -197,5 +198,4 @@ function PokemonDetail({ route: namedRoute }) {
     </Box>
   );
 }
-
 export default PokemonDetail;

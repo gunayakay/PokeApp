@@ -1,5 +1,5 @@
 import React from "react";
-import { Center, Text, Progress, Box } from "native-base";
+import { Center, Text, Box } from "native-base";
 import PropTypes from "prop-types";
 import useEvolution from "../../../../hooks/useEvolution";
 import extractPokemonId from "../../../../utils/extractPokemonId";
@@ -8,8 +8,9 @@ import Loading from "../../../../components/loading";
 function Evolution({ url }) {
   const pokemonId = extractPokemonId(url);
   const { data, isLoading, isError } = useEvolution(
-    `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`
+    `https://pokeapi.co/api/v2/evolution-chain/${pokemonId}`
   );
+  console.log(data);
   if (isLoading) return <Loading />;
   if (isError) return <Text>Error</Text>;
 
@@ -24,7 +25,7 @@ function Evolution({ url }) {
       }}
     >
       <Box bg="red" flex={1}>
-        <Text>{data.evolution_chain}</Text>
+        <Text></Text>
       </Box>
     </Center>
   );
