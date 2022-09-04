@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   useColorModeValue,
   Heading,
@@ -22,21 +22,37 @@ import Evoluion from "./components/Evolution";
 import BaseStats from "./components/BaseStats";
 import About from "./components/About";
 import icons from "../../static/icons";
+import {
+  setPokemon,
+  deletePokemon,
+  filterPokemon,
+} from "../../storage/likeStorage";
+import extractPokemonId from "../../utils/extractPokemonId";
 
 const initialLayout = {
   width: Dimensions.get("window").width,
 };
 
 function PokemonDetail({ route: namedRoute }) {
-  const [favoritePokemon, setFavoritePokemon] = useState(false);
+  const { url } = namedRoute.params;
+  const pokemonId = extractPokemonId(url);
   const [pressed, setPressed] = useState(false);
-  function handlePressed() {
-    console.log("pressed");
+
+  useEffect(() => {
+    (async () => {
+      const pressedState = await filterPokemon(pokemonId);
+      setPressed(pressedState);
+    })();
+  }, []);
+
+  async function handlePressed() {
     setPressed((prev) => !prev);
+    if (pressed) await deletePokemon(pokemonId);
+    else await setPokemon(pokemonId);
   }
 
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
     {
       key: "first",
       title: "About",
@@ -54,7 +70,6 @@ function PokemonDetail({ route: namedRoute }) {
       title: "Moves",
     },
   ]);
-  const { url } = namedRoute.params;
   const { data, isLoading, isError } = usePokemon(url);
 
   const renderScene = ({ route }) => {

@@ -10,7 +10,6 @@ function Evolution({ url }) {
   const { data, isLoading, isError } = useEvolution(
     `https://pokeapi.co/api/v2/evolution-chain/${pokemonId}`
   );
-  console.log(data);
   if (isLoading) return <Loading />;
   if (isError) return <Text>Error</Text>;
 
