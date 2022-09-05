@@ -4,7 +4,7 @@ import { Box } from "native-base";
 import { useQuery } from "@tanstack/react-query";
 import Movesbox from "./components/Movesbox";
 import getMove from "../../services/getMove";
-import Loading from "../../components/Loading";
+import Loading from "../../components/loading";
 
 function Moves() {
   const { data, isLoading, isError } = useQuery(["getMove"], getMove);

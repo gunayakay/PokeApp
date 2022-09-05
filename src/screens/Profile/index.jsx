@@ -1,35 +1,49 @@
 /* eslint-disable global-require */
-import React, { useState, useEffect } from "react";
-import { Box, ScrollView } from "native-base";
+import React from "react";
+import { Box, ScrollView, Text } from "native-base";
+import { useQuery } from "@tanstack/react-query";
 import Card from "../../components/Card";
 import { getPokemons } from "../../storage/likeStorage";
+import Loading from "../../components/loading";
+import useRefreshOnFocus from "../../hooks/useRefreshOnFocus";
 
 function Profile() {
-  const [likeArray, setlikeArray] = useState([]);
-  useEffect(() => {
-    (async () => {
-      const currentLikes = await getPokemons();
-      setlikeArray(currentLikes);
-    })();
-  }, []);
+  const { data, isLoading, isError, refetch } = useQuery(
+    ["likedPokemons"],
+    getPokemons
+  );
+  useRefreshOnFocus(refetch);
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <Box
-        flex={1}
-        padding={5}
-        _dark={{
-          bg: "coolGray.800",
-        }}
-        _light={{
-          bg: "warmGray.50",
-        }}
-      >
-        {likeArray.map((item) => (
-          <Card id={item} />
-        ))}
-      </Box>
-    </ScrollView>
+    <Box
+      padding={5}
+      flex={1}
+      justifyContent="center"
+      width="full"
+      height="full"
+      _dark={{
+        bg: "coolGray.800",
+      }}
+      _light={{
+        bg: "warmGray.50",
+      }}
+    >
+      {isLoading && <Loading />}
+      {isError && (
+        <Text>
+          There was an error while trying to fetch your likes. Please try again
+          later.
+        </Text>
+      )}
+
+      {!isLoading && !isError && (
+        <ScrollView showsVerticalScrollIndicator={false} flex="1">
+          {data.map((item) => (
+            <Card id={item} />
+          ))}
+        </ScrollView>
+      )}
+    </Box>
   );
 }
 export default Profile;

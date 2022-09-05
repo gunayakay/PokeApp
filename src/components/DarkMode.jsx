@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import { Text, Center, Box, Switch, useColorMode } from "native-base";
+import React from "react";
+import { Text, Center, Box, Switch, HStack, useColorMode } from "native-base";
 
 function DarkMode() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -17,13 +17,15 @@ function DarkMode() {
           bg: "warmGray.50",
         }}
       >
-        <Text fontSize="lg" display="flex" mb="20">
-          The active color mode is{" "}
-          <Text bold fontSize="lg">
-            {colorMode}
+        <HStack space="3" alignItems="stretch" justifyContent="space-between">
+          <Text fontSize="lg">
+            The active color mode is{" "}
+            <Text bold fontSize="lg">
+              {colorMode}
+            </Text>
           </Text>
-        </Text>
-        <Switch onChange={toggleColorMode} />
+          <Switch onChange={toggleColorMode} />
+        </HStack>
       </Box>
     </Center>
   );

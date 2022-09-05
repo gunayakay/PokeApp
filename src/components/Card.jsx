@@ -35,6 +35,8 @@ function Card({ id }) {
           url: `https://pokeapi.co/api/v2/pokemon/${id}`,
         });
       }}
+      flex="1"
+      width="full"
     >
       <Box
         backgroundColor={backgroundColor[primaryPokemonType]}
