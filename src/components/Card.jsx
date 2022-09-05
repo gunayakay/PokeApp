@@ -41,7 +41,7 @@ function Card({ id }) {
         w="100%"
         marginBottom={10}
         h="250"
-        borderRadius="7"
+        borderRadius="20"
         padding="3"
       >
         <Box flex="2">

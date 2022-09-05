@@ -18,7 +18,6 @@ import Loading from "../../components/loading";
 import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import backgroundColor from "../../static/bg";
 import Moves from "./components/Moves";
-import Evoluion from "./components/Evolution";
 import BaseStats from "./components/BaseStats";
 import About from "./components/About";
 import icons from "../../static/icons";
@@ -28,6 +27,7 @@ import {
   filterPokemon,
 } from "../../storage/likeStorage";
 import extractPokemonId from "../../utils/extractPokemonId";
+import Ability from "./components/Ability";
 
 const initialLayout = {
   width: Dimensions.get("window").width,
@@ -63,7 +63,7 @@ function PokemonDetail({ route: namedRoute }) {
     },
     {
       key: "third",
-      title: "Evoluion",
+      title: "Abilities",
     },
     {
       key: "fourth",
@@ -79,7 +79,7 @@ function PokemonDetail({ route: namedRoute }) {
       case "second":
         return <BaseStats url={url} />;
       case "third":
-        return <Evoluion url={url} />;
+        return <Ability url={url} />;
       case "fourth":
         return <Moves url={url} />;
       default:

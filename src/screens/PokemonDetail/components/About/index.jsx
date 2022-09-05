@@ -1,5 +1,5 @@
 import React from "react";
-import { Center, Text, Progress, Box } from "native-base";
+import { Text, Progress, Box, ScrollView } from "native-base";
 import PropTypes from "prop-types";
 import useAboutInfo from "../../../../hooks/useAboutInfo";
 import extractPokemonId from "../../../../utils/extractPokemonId";
@@ -14,7 +14,7 @@ function About({ url }) {
   if (isLoading) return <Loading />;
   if (isError) return <Text>Error</Text>;
   return (
-    <Center
+    <ScrollView
       flex={1}
       _dark={{
         bg: "coolGray.800",
@@ -24,7 +24,7 @@ function About({ url }) {
       }}
       w="full"
     >
-      <Box bg="red" flex={1} w="full" padding={5}>
+      <Box flex={1} w="full" padding={5}>
         <Text marginBottom={3} fontSize="md">
           {cleanceString(data.flavor_text_entries[0].flavor_text)}
         </Text>
@@ -52,7 +52,7 @@ function About({ url }) {
           <Progress size="md" colorScheme="warning" value={data.capture_rate} />
         </Box>
       </Box>
-    </Center>
+    </ScrollView>
   );
 }
 
