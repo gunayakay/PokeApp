@@ -1,6 +1,8 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Ionicons from "react-native-vector-icons";
 import Login from "./screens/Login";
 import Home from "./screens/Home";
 import Profile from "./screens/Profile";
@@ -13,13 +15,27 @@ import Abilities from "./screens/Abilities";
 import Moves from "./screens/Moves";
 import Locations from "./screens/Locations";
 import ForgetPassword from "./screens/ForgetPassword";
+import { Box, Image } from "native-base";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function NestedTab() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarIcon: ({ focused }) => (
+          <Box>
+            <Image
+              source={require("./static/pokeball.png")}
+              resizeMode="contain"
+              style={{ width: 25 }}
+              alt="image"
+            />
+          </Box>
+        ),
+      }}
+    >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="Watchlist" component={Watchlist} />
