@@ -16,6 +16,7 @@ function Profile() {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Box
+        flex={1}
         padding={5}
         _dark={{
           bg: "coolGray.800",

@@ -7,7 +7,7 @@ import { Box, HStack, Text, VStack } from "native-base";
 import CBox from "./components/cBox";
 import SearchBar from "../../components/SearchBar";
 import RandomPokemon from "../../components/RandomPokemon";
-import Loading from "../../components/loading";
+import Loading from "../../components/Loading";
 import generateRandomPokemon from "../../utils/generateRandomPokemon";
 import useDailyPokemon from "../../hooks/useDailyPokemon";
 
